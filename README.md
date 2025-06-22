@@ -22,6 +22,7 @@
 > 🔥 **DeepSick** is a critical subproject of the elite cybersecurity suite **OBLIVION SERPENT** — a multi-headed initiative targeting absolute simulation and defense comprehension across digital warfare fronts.
 
 🌐This project is still under development and will receive updates.
+✔Current version: v2.26.0.3
 
 ---
 
