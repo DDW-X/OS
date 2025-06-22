@@ -14,7 +14,7 @@ If you find a vulnerability:
 
 ## Scope of responsibility
 
-- backend (Rust, Go)
+- backend (C, Assembly, Makefile, Shell, C++)
 - frontend (React)
 - threat engine / defense layers
 - security documentation
