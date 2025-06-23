@@ -1,7 +1,7 @@
 
 # DeepSick — Adversarial Simulation Framework (OBLIVION SERPENT Subproject)
 
-![DeepSick Logo](https://raw.githubusercontent.com/DDW-X/deepsick/main/assets/deepsick_logo.png)
+![DeepSick Logo](https://github.com/DDW-X/OS/blob/main/%D9%84%D9%88%DA%AF%D9%88.jpg)
 
 > “Those who understand the darkness are not those who embrace it — but those who light the way through it.”
 
