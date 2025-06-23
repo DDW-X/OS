@@ -1,7 +1,13 @@
+More actions
+# DeepSick
+
+![Project Logo](لوگو.jpg)
+
+---
+
 
 # DeepSick — Adversarial Simulation Framework (OBLIVION SERPENT Subproject)
 
-![DeepSick Logo](https://github.com/DDW-X/OS/blob/main/%D9%84%D9%88%DA%AF%D9%88.jpg)
 
 > “Those who understand the darkness are not those who embrace it — but those who light the way through it.”
 
@@ -9,14 +15,14 @@
 [![License](https://img.shields.io/github/license/DDW-X/deepsick)](LICENSE)
 [![Maintained by DDW-X](https://img.shields.io/badge/maintainer-DDW--X-blue)](https://github.com/DDW-X)
 
-
 ---
 
 ## 🧬 Project Lineage
 
 > 🔥 **DeepSick** is a critical subproject of the elite cybersecurity suite **OBLIVION SERPENT** — a multi-headed initiative targeting absolute simulation and defense comprehension across digital warfare fronts.
 
-
+🌐This project is still under development and will receive updates.
+✔Current version: v2.26.0.3
 
 ---
 
@@ -84,6 +90,65 @@ Do **NOT** use this project if you:
 - Seek thrill, challenge, or chaos over lawful research
 
 > Violations may breach international cybercrime laws and ethical standards.
+
+---
+
+![Project Structure](deepsick_project_structure.png)
+
+## Overview
+
+**DeepSick** is a low-level advanced framework composed of multiple modules designed for deep system interactions. It includes kernel-level modules, bootkits, persistence mechanisms, and covert components for research and educational purposes.
+
+> ⚠️ This project is for educational, ethical research, and security awareness purposes only.
+
+---
+
+## Project Structure
+
+- **core/**: Backdoor logic, hooking, persistence, stealth modules.
+- **kernel/**: Kernel module source code for system interaction.
+- **bootkit/**: Assembly bootkit loaders.
+- **user/**: User-space dropper & anti-debugging components.
+- **keys/**: Secure storage and signing keys management.
+- **scripts/**: Build, deployment, and system preparation scripts.
+- **test/**: Unit tests, integration tests, VM configuration.
+- **bin/**: Installers and compiled artifacts.
+- **doc/**: Full documentation, API references, deployment instructions.
+
+---
+
+## Build & Run
+
+```bash
+cd deepsick
+make
+sudo ./scripts/deploy.sh
+```
+
+Make sure you fully understand each module before execution.
+
+---
+
+## Documentation
+
+Documentation can be found in `/doc` folder:
+
+- `API_REFERENCE.md`
+- `DEPLOYMENT.md`
+- `DESIGN.md`
+- `TROUBLESHOOTING.md`
+
+---
+
+## Contribution
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting any changes.
+
+---
+
+## Disclaimer
+
+This project is provided AS-IS for research purposes. The author is not responsible for any misuse.
 
 ---
 
@@ -196,22 +261,6 @@ Use at your own risk. All activities should comply with your local laws, organiz
 
 ---
 
-## License
-
-Licensed under the **Apache License 2.0**.  
-You may freely use, modify, and distribute this software under the terms of this license.  
-See the `LICENSE` file for full details.
-
----
-
-## Contributing
-
-See `CONTRIBUTING.md` for workflow, formatting, and testing instructions.  
-PRs are welcome, but will be reviewed with strict security policy.
-
----
-
-> Developed by DDW-X as a hardened foundation for cyber defense innovation.
-
----------------------
-
+> Crafted with military precision by the DDW-X Collective for zero-compromise cyber defense.
+> 
+> Join the resistance. Fortify the future.
