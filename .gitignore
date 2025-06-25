@@ -1,0 +1,14 @@
+# Compiled files
+ build/
+ bin/
+ *.ko
+ *.o
+ *.bin
+ *.log
+
+# Keys
+ keys/*.key
+ keys/*.pem
+
+# Virtual disk
+ test/vm/virtual-disk.img
