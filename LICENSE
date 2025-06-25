@@ -1,6 +1,38 @@
-                     Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+CUSTOM NON-COMMERCIAL RESEARCH LICENSE (CNRL)
+Version 1.0 – June 2025
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
-   ... (shortened for brevity) ...
+Copyright (c) 2025 DDW-X (https://github.com/DDW-X)
+
+This software and associated documentation files (the "Software") are protected by international copyright laws. All rights not expressly granted herein are reserved by the copyright holder, DDW-X.
+
+1. GRANT OF LICENSE  
+Subject to the terms and conditions of this license, permission is granted to any individual or academic institution to use this Software exclusively for non-commercial research and personal educational purposes.
+
+2. CONDITIONS AND LIMITATIONS  
+a) Attribution Requirement:  
+All uses of the Software, including derived materials, must include clear and visible attribution to the original author as follows:  
+> “Original work by DDW-X (https://github.com/DDW-X)”
+
+b) Prohibition of Commercial Use:  
+Commercial use of the Software, in whole or in part, is strictly prohibited. This includes, but is not limited to:
+   - Integration in proprietary or open-source commercial products;
+   - Use in for-profit services (SaaS, PaaS, embedded systems);
+   - Use for training commercial AI or machine learning systems;
+   - Any direct or indirect revenue-generating activity.
+
+c) Prohibition of Distribution and Publication:  
+Redistribution, publication, or sharing of this Software or any modified version thereof is strictly forbidden, unless prior written authorization is obtained from DDW-X.
+
+d) Prohibition of Derivative Works for Public Use:  
+Creation of derivative works for private research is permitted, but such works must not be made public, published, or shared in any form, without the author's explicit written consent.
+
+e) Integrity Clause:  
+Users must not remove, alter, or obscure copyright, license, or attribution notices.
+
+3. NO WARRANTY  
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF THE SOFTWARE.
+
+4. GOVERNING LAW  
+This License shall be governed and interpreted in accordance with the laws of the jurisdiction of the author (Iran, EU, or otherwise as applicable).
+
+All rights reserved. For licensing inquiries or exceptions, contact the author at: https://github.com/DDW-X
