@@ -1,7 +1,7 @@
 More actions
 # DeepSick
 
-![Project Logo](لوگو.jpg)
+![Project Logo](https://github.com/DDW-X/OS/blob/main/Logo.OS.jpg)
 
 ---
 
