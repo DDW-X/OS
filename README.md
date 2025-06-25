@@ -23,7 +23,10 @@ More actions
 
 🌐This project is still under development and will receive updates.
 ---
-✔Current version: v3.9
+
+✔Current version: v5.1
+
+⚠Previous version: v3.9
 
 ⚠Previous version: v2.26.0.3
 
