@@ -157,12 +157,9 @@ This project is provided AS-IS for research purposes. The author is not responsi
 
 ## 📜 Licensing
 
-Licensed under the **Apache License 2.0**:
-
-- You may **use, modify, distribute** freely.
-- You **must include this disclaimer**.
-- The authors bear **no responsibility**.
-- License protects **us**, not **you**.
+> This project is licensed under the CNRL-DDW-X v1.0 (Custom Non-Commercial Research License).
+Commercial use, redistribution, or modification without written consent is strictly prohibited.
+© 2025 DDW-X – All rights reserved.
 
 ---
 
