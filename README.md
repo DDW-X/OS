@@ -25,7 +25,7 @@ More actions
 ---
 ✔Current version: v3.9
 
-⚠Current version: v2.26.0.3
+⚠Previous version: v2.26.0.3
 
 ---
 
