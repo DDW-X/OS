@@ -1,38 +1,81 @@
 CUSTOM NON-COMMERCIAL RESEARCH LICENSE (CNRL)
+
 Version 1.0 – June 2025
 
-Copyright (c) 2025 DDW-X (https://github.com/DDW-X)
+© 2025 DDW-X (https://github.com/DDW-X)
+All rights reserved.
 
 This software and associated documentation files (the "Software") are protected by international copyright laws. All rights not expressly granted herein are reserved by the copyright holder, DDW-X.
 
-1. GRANT OF LICENSE  
-Subject to the terms and conditions of this license, permission is granted to any individual or academic institution to use this Software exclusively for non-commercial research and personal educational purposes.
 
-2. CONDITIONS AND LIMITATIONS  
-a) Attribution Requirement:  
-All uses of the Software, including derived materials, must include clear and visible attribution to the original author as follows:  
+---
+
+1. GRANT OF LICENSE
+
+Permission is granted to any individual or academic institution to use this Software exclusively for non-commercial research and personal educational purposes, subject to the terms below.
+
+2. CONDITIONS AND LIMITATIONS
+
+a) Attribution Requirement
+All uses of the Software must include clear and visible attribution:
+
 > “Original work by DDW-X (https://github.com/DDW-X)”
 
-b) Prohibition of Commercial Use:  
-Commercial use of the Software, in whole or in part, is strictly prohibited. This includes, but is not limited to:
-   - Integration in proprietary or open-source commercial products;
-   - Use in for-profit services (SaaS, PaaS, embedded systems);
-   - Use for training commercial AI or machine learning systems;
-   - Any direct or indirect revenue-generating activity.
 
-c) Prohibition of Distribution and Publication:  
-Redistribution, publication, or sharing of this Software or any modified version thereof is strictly forbidden, unless prior written authorization is obtained from DDW-X.
 
-d) Prohibition of Derivative Works for Public Use:  
-Creation of derivative works for private research is permitted, but such works must not be made public, published, or shared in any form, without the author's explicit written consent.
+b) Prohibition of Commercial Use
+Commercial use of the Software is strictly prohibited, including:
 
-e) Integrity Clause:  
-Users must not remove, alter, or obscure copyright, license, or attribution notices.
+Integration in commercial or open-source products;
 
-3. NO WARRANTY  
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF THE SOFTWARE.
+Use in revenue-generating services (SaaS, PaaS);
 
-4. GOVERNING LAW  
-This License shall be governed and interpreted in accordance with the laws of the jurisdiction of the author (Iran, EU, or otherwise as applicable).
+Use in commercial AI training;
 
-All rights reserved. For licensing inquiries or exceptions, contact the author at: https://github.com/DDW-X
+Any activity that generates income, directly or indirectly.
+
+
+c) Prohibition of Distribution and Publication
+Redistribution, publication, or sharing of this Software or modified versions is forbidden without prior written permission.
+
+d) Prohibition of Public Derivatives
+Derivative works may only be used privately. Public sharing or publication is strictly prohibited without explicit consent.
+
+e) Integrity Clause
+You may not remove or alter copyright/license notices.
+
+f) Research Use Audit (Voluntary)
+Users are encouraged to notify the author of their non-commercial use for citation or collaboration purposes.
+
+
+---
+
+3. NO WARRANTY
+
+The Software is provided "AS IS", without warranty of any kind. The author shall not be liable for any damages.
+
+4. GOVERNING LAW
+
+This License is governed by the laws of the author’s jurisdiction (Iran, EU, or as applicable).
+
+5. OWNERSHIP OF DERIVATIVE WORKS & LEGAL LIABILITY
+
+a) Derivative Ownership Preservation
+All derivative works remain the intellectual property of the original author (DDW-X). This license fully applies to them.
+
+b) Binding License Extension
+This license applies to all forms of derivative work, regardless of language, platform, or structure.
+
+c) Legal Liability Transfer
+The author bears no responsibility for any consequence of use or misuse. All liability rests with the user.
+
+d) Enforcement and Jurisdiction
+Violations may be prosecuted under the laws of both the user's and author's jurisdiction, including international law.
+
+
+---
+
+For exceptions, contact: https://github.com/DDW-X
+
+
+---
