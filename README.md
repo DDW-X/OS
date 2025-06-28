@@ -12,7 +12,7 @@ More actions
 > “Those who understand the darkness are not those who embrace it — but those who light the way through it.”
 
 [![Security Status](https://img.shields.io/badge/security-extremely_volatile-red)](SECURITY.md)
-[![License](https://img.shields.io/github/license/DDW-X/deepsick)](LICENSE)
+[[![License](https://img.shields.io/github/license/DDW-X/deepsick)](LICENSE)](https://github.com/DDW-X/OS?tab=License-1-ov-file#readme)
 [![Maintained by DDW-X](https://img.shields.io/badge/maintainer-DDW--X-blue)](https://github.com/DDW-X)
 
 ---
