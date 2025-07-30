@@ -1,0 +1,14 @@
+#!/bin/bash
+# Generate encrypted payload
+dd if=/dev/urandom of=Payloads/payload_raw.bin bs=1024 count=10
+
+# Encrypt with AES-256
+openssl enc -aes-256-cbc \
+    -in Payloads/payload_raw.bin \
+    -out Payloads/MainPayload.bin \
+    -k "$(head -c 32 /dev/urandom | base64)" \
+    -pbkdf2 -iter 100000
+
+# Add Malbolge header
+printf "MBG" >> Payloads/MainPayload.bin
+cat Payloads/MalbolgeTrap.mbg >> Payloads/MainPayload.bin
